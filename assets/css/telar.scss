@@ -1,0 +1,58 @@
+---
+---
+{%- comment -%}Three-tier theme loading with fallback protection{%- endcomment -%}
+{% assign theme = site.data.themes[site.telar_theme] %}
+{% unless theme %}
+  {% assign theme = site.data.themes['paisajes'] %}
+{% endunless %}
+{% unless theme %}
+  {% assign theme = site.data.defaults.themes.paisajes %}
+{% endunless %}
+
+@use 'typography';
+@use 'layout';
+@use 'story';
+@use 'panels';
+@use 'viewer';
+@use 'widgets';
+@use 'embed';
+@use 'share';
+
+/**
+ * Telar - Digital Storytelling Framework CSS
+ *
+ * This is the main entry point for all Telar styles. It handles two things that
+ * cannot live in SCSS partials: the YAML front matter (which tells Jekyll to
+ * process this file) and the Liquid template tags that read the active theme
+ * and set CSS custom properties. Every other style rule lives in a partial
+ * inside _sass/, loaded via @use above.
+ *
+ * The partials are loaded in cascade order: typography first (lowest
+ * specificity, most general), then layout, story, panels, viewer, widgets,
+ * embed, and share (highest specificity, most specific). This order matches
+ * the original monolithic stylesheet so that overrides work the same way.
+ *
+ * @version v0.7.0-beta
+ */
+
+/* CSS Variables with hardcoded paisajes defaults as ultimate fallback */
+:root {
+  /* Text colors */
+  --color-heading: {{ theme.colors.text.heading | default: "#2c3e50" }};
+  --color-body: {{ theme.colors.text.body | default: "#333333" }};
+  --color-link: {{ theme.colors.text.link | default: "#8b4513" }};
+  --color-button-text: {{ theme.colors.text.button | default: "#FFFFFF" }};
+  --color-panel-layer1-text: {{ theme.colors.text.panel_layer1 | default: "#2c3e50" }};
+  --color-panel-layer2-text: {{ theme.colors.text.panel_layer2 | default: "#FFFFFF" }};
+  --color-panel-glossary-text: {{ theme.colors.text.panel_glossary | default: "#333333" }};
+
+  /* Background colors */
+  --color-button-bg: {{ theme.colors.background.button | default: "#2c3e50" }};
+  --color-panel-layer1-bg: {{ theme.colors.background.panel_layer1 | default: "#A8C5D4" }};
+  --color-panel-layer2-bg: {{ theme.colors.background.panel_layer2 | default: "#3d2645" }};
+  --color-panel-glossary-bg: {{ theme.colors.background.panel_glossary | default: "#F5EDE1" }};
+
+  /* Fonts */
+  --font-headings: {{ theme.fonts.headings | default: "'Playfair Display', serif" }};
+  --font-body: {{ theme.fonts.body | default: "'Source Sans Pro', sans-serif" }};
+}
