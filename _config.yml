@@ -47,7 +47,7 @@ story_key: "test"
 google_sheets:
   enabled: true
   shared_url: "https://docs.google.com/spreadsheets/d/1-yn3CGanQ02mWzpq7NJqVr6pvaKwCUhX2qo58YKvj8g/edit?usp=sharing"
-  published_url: "https://docs.google.com/spreadsheets/d/1-yn3CGanQ02mWzpq7NJqVr6pvaKwCUhX2qo58YKvj8g/edit?usp=sharing"
+  published_url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSLcZBrGAuQMvp0QYG3e5foDhtkpe1HWl0JIEbS8WjqWDAKUAFUtRUJDdZBW3Kuwng98Ef3EMimMeA9/pubhtml"
 
 
 #
